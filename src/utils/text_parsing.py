@@ -49,11 +49,13 @@ def extract_date_from_text(text: str) -> str:
 
 def extract_condition_from_text(text: str) -> str:
     """Extract condition from text."""
+    # Order matters - longer/more specific conditions first
     conditions = [
-        "Mint", "Near Mint", "Lightly Played", "Moderately Played", "Heavily Played", "Damaged",
+        "Near Mint", "Lightly Played", "Moderately Played", "Heavily Played", "Non-Foil", "Non-Holo",
+        "Mint", "Damaged",  # Shorter conditions after longer ones
         "NM", "LP", "MP", "HP", "DMG",  # Abbreviations
         "Japanese", "English",  # Language variants
-        "Foil", "Non-Foil", "Holo", "Non-Holo"  # Foil variants
+        "Foil", "Holo"  # Foil variants (shorter ones last)
     ]
     
     text_lower = text.lower()

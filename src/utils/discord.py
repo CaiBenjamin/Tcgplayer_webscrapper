@@ -43,8 +43,14 @@ def send_startup_notification(webhook_url: str, pages_to_monitor: List[str], mon
             # Try to extract card name from URL
             if 'product/' in url:
                 parts = url.split('/')
-                if len(parts) > 4:
-                    card_name = parts[4].replace('-', ' ').title()
+                if len(parts) > 5:
+                    # Get the product name part (after the product ID)
+                    product_part = parts[5]
+                    # Remove query parameters if present
+                    if '?' in product_part:
+                        product_part = product_part.split('?')[0]
+                    # Replace hyphens with spaces and title case
+                    card_name = product_part.replace('-', ' ').title()
                     card_names.append(card_name)
                 else:
                     card_names.append("Unknown Card")

@@ -56,6 +56,59 @@ Edit `configs/config.yaml` to customize:
    python scripts/tcgplayer_last_sold_monitor.py
    ```
 
+## Testing
+
+The project includes comprehensive unit tests for all core functionality:
+
+### Running Tests
+
+**Quick Test (Core Functionality)**:
+```bash
+python tests/test_runner.py
+```
+
+**Full Test Suite**:
+```bash
+python -m pytest tests/ -v
+```
+
+**Specific Test Categories**:
+```bash
+# Unit tests only
+python -m pytest tests/unit/ -v
+
+# Integration tests only  
+python -m pytest tests/integration/ -v
+
+# Specific test file
+python -m pytest tests/unit/test_data_classes.py -v
+```
+
+### Test Coverage
+
+- **✅ Data Classes**: `LastSoldRecord` serialization/deserialization
+- **✅ Text Parsing**: Price, date, and condition extraction utilities
+- **✅ Discord Integration**: Alert sending and startup notifications
+- **✅ Configuration**: YAML loading and value retrieval
+- **✅ Monitor Class**: Core monitoring functionality (partial)
+
+### Test Structure
+
+```
+tests/
+├── unit/                    # Unit tests for individual components
+│   ├── test_data_classes.py
+│   ├── test_text_parsing.py
+│   ├── test_discord.py
+│   ├── test_config.py
+│   └── test_monitor.py
+├── integration/             # Integration tests
+│   └── test_config_integration.py
+├── conftest.py             # Pytest fixtures and configuration
+├── test_runner.py          # Simple test runner for core functionality
+└── __init__.py
+```
+
 ## Architecture
 
 - **Data Classes**: `LastSoldRecord` for type-safe data handling

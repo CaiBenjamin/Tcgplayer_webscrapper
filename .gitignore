@@ -37,9 +37,9 @@ Thumbs.db
 .env
 .env.local
 
-# Test files
-test_*.py
-*_test.py
+# Test files (but allow our test suite)
+# test_*.py
+# *_test.py
 
 # Backup files
 *.bak
